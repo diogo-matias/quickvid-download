@@ -10,9 +10,13 @@ Repositório público de **releases** do QuickVid AI.
 
 https://github.com/diogo-matias/quickvid-download/releases/latest
 
+Clique em "More Info" ( mais informações ) e depois em "Run Anyway" ( abrir mesmo asim )
+<img width="550" height="390" alt="image" src="https://github.com/user-attachments/assets/4dc8721c-e4f1-47ff-ab4c-5eb17bff6665" />
+
+
 ---
 
-**A instalação deve ser feita OBRIGATÓRIAMENTE via script.** O script baixa a versão correta, instala em `/Applications` e remove o aviso do Gatekeeper automaticamente.
+**A instalação deve ser feita OBRIGATORIAMENTE via script.** O script baixa a versão correta, instala em `/Applications` e remove o aviso do Gatekeeper automaticamente.
 
 Abra o **Terminal** e execute:
 

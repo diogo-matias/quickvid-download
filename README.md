@@ -6,7 +6,7 @@ Repositório público de **releases** do QuickVid AI.
 
 ## Instalação (Windows)
 
-**Baixe o arquivo .exe da ultima release **.
+**Baixe o arquivo .exe da ultima release**.
 
 https://github.com/diogo-matias/quickvid-download/releases/latest
 

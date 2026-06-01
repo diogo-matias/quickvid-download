@@ -1,6 +1,6 @@
 # QuickVid AI
 
-**Escale seu canal dark: menos horas editando, mais vídeos no ar.**
+**Escale seu canal: menos horas editando, mais vídeos no ar.**
 
 App desktop para quem quer produzir vídeos com qualidade, sem editar frame a frame. O QuickVid transforma seu áudio em material visual organizado.
 

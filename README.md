@@ -26,64 +26,11 @@ Você envia a narração, o app organiza trechos alinhados ao áudio e entrega m
 
 Um app desktop que cuida da parte pesada entre a narração e a edição final. Você mantém o controle do canal; o QuickVid organiza a produção visual.
 
-### Menos retrabalho
-
-Chega de caçar B-roll, repetir prompt e perder o fio da narração. Tudo fica no mesmo projeto.
-
-*Fluxo contínuo, sem trocar de ferramenta o tempo todo.*
-
-### Material organizado
-
-Cada parte da narração vira trecho com visual definido. Você sabe o que gerar e onde encaixa.
-
-*Escala sem virar bagunça de pastas.*
-
-### Pronto para editar
-
-A saída é pensada para você montar o vídeo no editor que já usa. O QuickVid não substitui sua edição final.
-
-*Mais vídeos no ar com o mesmo time.*
-
----
-
-## Para quem é
-
-Criadores de vídeo que trabalham com narração e precisam produzir mais, sem montar tudo na mão.
-
-- Canais no **YouTube, TikTok e Reels**
-- Formatos **faceless**, educativos, curiosidades, mistério, terror e nichos narrados
-- Quem publica **vários vídeos por semana** e quer ganhar tempo na pré-produção
-- Produtores solo ou **pequenas equipes** no Brasil
-- Quem já edita em **CapCut, Premiere** ou similar e quer material organizado
-- Criadores de **canal dark** que buscam escalar volume com coerência visual
-
 ---
 
 ## Planos e créditos
 
 Planos e créditos extras ficam **dentro do app**, após criar conta. O saldo aparece na sidebar enquanto você produz.
-
----
-
-## Perguntas frequentes
-
-**Preciso saber editar?**  
-A montagem final continua no seu editor de vídeo. O QuickVid acelera a pré-produção visual antes dessa etapa.
-
-**Funciona com voz IA?**  
-Sim. Basta enviar o arquivo de áudio da narração, seja voz gravada ou gerada por IA.
-
-**Conta Google é obrigatória?**  
-Para gerar mídia dentro do app, você conecta sua conta Google na área de integrações.
-
-**Funciona no Mac e no Windows?**  
-Sim. O QuickVid AI é um app desktop para macOS e Windows.
-
-**Os vídeos ficam todos iguais?**  
-Você define o estilo e as instruções do seu canal. O app organiza a produção; a identidade visual continua sua.
-
-**O app publica direto no YouTube?**  
-Não. A saída é material organizado para você editar e publicar no seu ritmo.
 
 ---
 

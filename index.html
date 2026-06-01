@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="App desktop para escalar produção de vídeo com narração. Transforme áudio em material visual organizado. Mac e Windows."
+    />
+    <meta
+      name="keywords"
+      content="canal dark, vídeo dark, narração faceless, automação Flow, prompts vídeo IA, CapCut canal dark, escalar canal YouTube"
+    />
+    <title>QuickVid AI — App para escalar canal dark | Áudio → Visuais</title>
+    <link rel="icon" href="public/img/logo_quickvid.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geologica:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: oklch(0.07 0.008 280);
+        --bg-elevated: oklch(0.1 0.01 280);
+        --surface: oklch(0.14 0.012 280);
+        --surface-hover: oklch(0.17 0.014 280);
+        --ink: oklch(0.94 0.012 280);
+        --muted: oklch(0.68 0.02 280);
+        --primary: oklch(0.78 0.13 75);
+        --primary-hover: oklch(0.84 0.14 78);
+        --primary-ink: oklch(0.16 0.04 75);
+        --brand-cyan: oklch(0.72 0.14 205);
+        --brand-violet: oklch(0.58 0.18 295);
+        --border: oklch(0.24 0.014 280);
+        --border-subtle: oklch(0.2 0.01 280);
+        --focus: oklch(0.72 0.14 205);
+        --code-bg: oklch(0.05 0.006 280);
+        --code-ink: oklch(0.88 0.01 280);
+        --shadow: oklch(0 0 0 / 0.45);
+        --radius: 0.75rem;
+        --radius-lg: 1rem;
+        --font: "Geologica", system-ui, sans-serif;
+        --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+        --container: min(100% - 2rem, 68rem);
+        --container-narrow: min(100% - 2rem, 42rem);
+        --z-sticky: 10;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+
+      body {
+        margin: 0;
+        font-family: var(--font);
+        font-size: 1.0625rem;
+        font-weight: 400;
+        line-height: 1.65;
+        color: var(--ink);
+        background: var(--bg);
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .container {
+        width: var(--container);
+        margin-inline: auto;
+      }
+
+      .container--narrow {
+        width: var(--container-narrow);
+        margin-inline: auto;
+      }
+
+      /* Header */
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: var(--z-sticky);
+        border-bottom: 1px solid var(--border-subtle);
+        background: oklch(0.07 0.008 280 / 0.92);
+        backdrop-filter: blur(12px);
+      }
+
+      .site-header__inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding-block: 0.875rem;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 0.625rem;
+        text-decoration: none;
+        color: inherit;
+        flex-shrink: 0;
+      }
+
+      .brand__logo {
+        width: 2rem;
+        height: 2rem;
+        object-fit: contain;
+      }
+
+      .brand__name {
+        font-size: 0.9375rem;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+      }
+
+      .brand__name span {
+        font-weight: 500;
+        color: var(--muted);
+      }
+
+      .site-nav {
+        display: none;
+        align-items: center;
+        gap: 1.5rem;
+      }
+
+      .site-nav a {
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: var(--muted);
+        text-decoration: none;
+        transition: color 160ms var(--ease-out);
+      }
+
+      .site-nav a:hover {
+        color: var(--ink);
+      }
+
+      .site-nav a:focus-visible {
+        outline: 2px solid var(--focus);
+        outline-offset: 3px;
+        border-radius: 2px;
+      }
+
+      @media (min-width: 48rem) {
+        .site-nav {
+          display: flex;
+        }
+      }
+
+      /* Buttons */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 0.625rem 1.125rem;
+        border-radius: 0.625rem;
+        border: none;
+        font-family: inherit;
+        font-size: 0.9375rem;
+        font-weight: 600;
+        text-decoration: none;
+        cursor: pointer;
+        transition:
+          background 180ms var(--ease-out),
+          color 180ms var(--ease-out),
+          border-color 180ms var(--ease-out),
+          transform 180ms var(--ease-out);
+      }
+
+      .btn:active {
+        transform: scale(0.98);
+      }
+
+      .btn:focus-visible {
+        outline: 2px solid var(--focus);
+        outline-offset: 3px;
+      }
+
+      .btn svg {
+        width: 1.125rem;
+        height: 1.125rem;
+        flex-shrink: 0;
+      }
+
+      .btn--primary {
+        background: var(--primary);
+        color: var(--primary-ink);
+      }
+
+      .btn--primary:hover {
+        background: var(--primary-hover);
+      }
+
+      .btn--ghost {
+        background: transparent;
+        color: var(--ink);
+        border: 1px solid var(--border);
+      }
+
+      .btn--ghost:hover {
+        background: var(--surface);
+        border-color: oklch(0.32 0.02 280);
+      }
+
+      .btn--sm {
+        padding: 0.45rem 0.875rem;
+        font-size: 0.8125rem;
+      }
+
+      .btn-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+      }
+
+      /* Hero */
+      .hero {
+        padding-block: clamp(3rem, 10vw, 5.5rem) clamp(3.5rem, 12vw, 6rem);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(ellipse 70% 50% at 20% 0%, oklch(0.58 0.18 295 / 0.14), transparent 60%),
+          radial-gradient(ellipse 60% 45% at 85% 15%, oklch(0.72 0.14 205 / 0.1), transparent 55%);
+        pointer-events: none;
+      }
+
+      .hero__grid {
+        display: grid;
+        gap: clamp(2.5rem, 6vw, 4rem);
+        align-items: center;
+        position: relative;
+      }
+
+      @media (min-width: 56rem) {
+        .hero__grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      .hero__copy h1 {
+        margin: 0 0 1rem;
+        font-size: clamp(2.125rem, 5vw, 3.25rem);
+        font-weight: 700;
+        line-height: 1.08;
+        letter-spacing: -0.035em;
+        text-wrap: balance;
+      }
+
+      .hero__copy h1 em {
+        font-style: normal;
+        color: var(--brand-cyan);
+      }
+
+      .hero__lead {
+        margin: 0 0 1.5rem;
+        max-width: 42ch;
+        font-size: 1.125rem;
+        color: var(--muted);
+        text-wrap: pretty;
+      }
+
+      .hero__trust {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem 1.25rem;
+        margin-top: 1.25rem;
+        font-size: 0.8125rem;
+        color: var(--muted);
+      }
+
+      .hero__trust span {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+      }
+
+      .hero__trust svg {
+        width: 0.875rem;
+        height: 0.875rem;
+        color: var(--brand-cyan);
+      }
+
+      /* Pipeline mock */
+      .pipeline-mock {
+        padding: 1.25rem;
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--border);
+        background: var(--bg-elevated);
+        box-shadow: 0 24px 48px var(--shadow);
+      }
+
+      .pipeline-mock__label {
+        margin: 0 0 1rem;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        color: var(--muted);
+        text-transform: uppercase;
+      }
+
+      .pipeline {
+        display: flex;
+        flex-direction: column;
+        gap: 0.875rem;
+      }
+
+      .pipeline__stage {
+        padding: 0.875rem;
+        border-radius: 0.625rem;
+        background: var(--surface);
+        border: 1px solid var(--border-subtle);
+      }
+
+      .pipeline__stage-title {
+        margin: 0 0 0.625rem;
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: var(--brand-cyan);
+      }
+
+      .waveform {
+        position: relative;
+        padding: 0.75rem 0.625rem 0.5rem;
+        border-radius: 0.5rem;
+        background: oklch(0.08 0.012 280);
+        border: 1px solid oklch(0.22 0.02 280);
+        overflow: hidden;
+      }
+
+      .waveform::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          90deg,
+          oklch(0.08 0.012 280) 0%,
+          transparent 12%,
+          transparent 88%,
+          oklch(0.08 0.012 280) 100%
+        );
+        pointer-events: none;
+        z-index: 2;
+      }
+
+      .waveform__svg {
+        display: block;
+        width: 100%;
+        height: 3.25rem;
+      }
+
+      .waveform__bars {
+        transform-origin: center bottom;
+      }
+
+      @media (prefers-reduced-motion: no-preference) {
+        .waveform__bars {
+          animation: waveform-breathe 3.2s var(--ease-out) infinite;
+        }
+
+        .waveform__playhead {
+          animation: playhead-pulse 2.4s var(--ease-out) infinite;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .waveform__bars,
+        .waveform__playhead {
+          animation: none;
+        }
+      }
+
+      @keyframes waveform-breathe {
+        0%, 100% { opacity: 0.88; transform: scaleY(0.94); }
+        50% { opacity: 1; transform: scaleY(1); }
+      }
+
+      @keyframes playhead-pulse {
+        0%, 100% { opacity: 0.65; }
+        50% { opacity: 1; }
+      }
+
+      .segments {
+        display: flex;
+        flex-direction: column;
+        gap: 0.375rem;
+      }
+
+      .segment {
+        display: grid;
+        grid-template-columns: 2.5rem 1fr;
+        gap: 0.5rem;
+        align-items: start;
+        padding: 0.375rem 0.5rem;
+        border-radius: 0.375rem;
+        background: oklch(0.11 0.01 280);
+        font-size: 0.6875rem;
+        line-height: 1.4;
+      }
+
+      .segment time {
+        color: var(--brand-violet);
+        font-variant-numeric: tabular-nums;
+        font-weight: 600;
+      }
+
+      .segment p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .thumb-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.375rem;
+      }
+
+      .thumb {
+        aspect-ratio: 16 / 10;
+        border-radius: 0.375rem;
+        background: linear-gradient(
+          145deg,
+          oklch(0.12 0.02 280),
+          oklch(0.08 0.04 295)
+        );
+        border: 1px solid var(--border-subtle);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .thumb::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse at 50% 80%,
+          oklch(0.2 0.06 295 / 0.5),
+          transparent 70%
+        );
+      }
+
+      .pipeline__arrow {
+        text-align: center;
+        color: var(--border);
+        font-size: 0.875rem;
+        line-height: 1;
+      }
+
+      /* Sections */
+      .section {
+        padding-block: clamp(3rem, 8vw, 5rem);
+      }
+
+      .section--alt {
+        background: var(--bg-elevated);
+        border-block: 1px solid var(--border-subtle);
+      }
+
+      .section__header {
+        margin-bottom: clamp(2rem, 5vw, 3rem);
+        max-width: 38rem;
+      }
+
+      .section__header h2 {
+        margin: 0 0 0.625rem;
+        font-size: clamp(1.625rem, 3.5vw, 2.25rem);
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        text-wrap: balance;
+      }
+
+      .section__header p {
+        margin: 0;
+        color: var(--muted);
+        text-wrap: pretty;
+      }
+
+      /* Proof */
+      .proof {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem 2.5rem;
+        align-items: center;
+      }
+
+      .proof__stat {
+        font-size: clamp(1.5rem, 3vw, 2rem);
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        color: var(--primary);
+      }
+
+      .proof__stat small {
+        display: block;
+        margin-top: 0.25rem;
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: var(--muted);
+      }
+
+      .proof__quote {
+        flex: 1;
+        min-width: min(100%, 20rem);
+        margin: 0;
+        padding: 1.25rem 1.5rem;
+        border-radius: var(--radius);
+        background: var(--surface);
+        border: 1px solid var(--border);
+        font-size: 1rem;
+        color: var(--muted);
+        text-wrap: pretty;
+      }
+
+      .proof__quote strong {
+        color: var(--ink);
+        font-weight: 600;
+      }
+
+      /* Steps */
+      .steps {
+        display: grid;
+        gap: 1.25rem;
+      }
+
+      @media (min-width: 48rem) {
+        .steps {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      .step-card {
+        padding: 1.5rem;
+        border-radius: var(--radius-lg);
+        background: var(--surface);
+        border: 1px solid var(--border);
+        transition: border-color 200ms var(--ease-out);
+      }
+
+      .step-card:hover {
+        border-color: oklch(0.32 0.04 280);
+      }
+
+      .step-card h3 {
+        margin: 0 0 0.5rem;
+        font-size: 1.125rem;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        text-wrap: balance;
+      }
+
+      .step-card p {
+        margin: 0 0 0.75rem;
+        font-size: 0.9375rem;
+        color: var(--muted);
+        text-wrap: pretty;
+      }
+
+      .step-card__benefit {
+        margin: 0;
+        font-size: 0.8125rem;
+        font-weight: 600;
+        color: var(--brand-cyan);
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+
+      @media (prefers-reduced-motion: no-preference) {
+        .reveal {
+          opacity: 0.92;
+          transform: translateY(12px);
+          transition:
+            opacity 560ms var(--ease-out),
+            transform 560ms var(--ease-out);
+        }
+
+        .reveal.is-visible {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        .reveal:nth-child(2) { transition-delay: 80ms; }
+        .reveal:nth-child(3) { transition-delay: 160ms; }
+      }
+
+      /* Lists */
+      .bullet-list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: grid;
+        gap: 0.75rem;
+      }
+
+      @media (min-width: 40rem) {
+        .bullet-list--2col {
+          grid-template-columns: 1fr 1fr;
+          gap: 0.75rem 2rem;
+        }
+      }
+
+      .bullet-list li {
+        position: relative;
+        padding-left: 1rem;
+        font-size: 0.9375rem;
+        color: var(--muted);
+        text-wrap: pretty;
+      }
+
+      .bullet-list li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.55em;
+        width: 0.375rem;
+        height: 0.375rem;
+        border-radius: 50%;
+        background: var(--primary);
+      }
+
+      .bullet-list strong {
+        color: var(--ink);
+        font-weight: 600;
+      }
+
+      /* Plans */
+      .plans-box {
+        padding: clamp(1.5rem, 4vw, 2rem);
+        border-radius: var(--radius-lg);
+        background: var(--surface);
+        border: 1px solid var(--border);
+        max-width: 32rem;
+      }
+
+      .plans-box p {
+        margin: 0 0 1.25rem;
+        color: var(--muted);
+        text-wrap: pretty;
+      }
+
+      /* FAQ */
+      .faq {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        max-width: 40rem;
+      }
+
+      .faq details {
+        border-radius: var(--radius);
+        background: var(--surface);
+        border: 1px solid var(--border-subtle);
+      }
+
+      .faq summary {
+        padding: 1rem 1.25rem;
+        font-weight: 600;
+        font-size: 0.9375rem;
+        cursor: pointer;
+        list-style: none;
+        text-wrap: pretty;
+      }
+
+      .faq summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .faq summary::after {
+        content: "+";
+        float: right;
+        color: var(--muted);
+        font-weight: 400;
+      }
+
+      .faq details[open] summary::after {
+        content: "−";
+      }
+
+      .faq summary:focus-visible {
+        outline: 2px solid var(--focus);
+        outline-offset: -2px;
+        border-radius: var(--radius);
+      }
+
+      .faq__body {
+        padding: 0 1.25rem 1rem;
+        font-size: 0.9375rem;
+        color: var(--muted);
+        text-wrap: pretty;
+      }
+
+      /* CTA band */
+      .cta-band {
+        padding-block: clamp(3rem, 8vw, 4.5rem);
+        text-align: center;
+        background:
+          radial-gradient(ellipse 80% 60% at 50% 100%, oklch(0.58 0.18 295 / 0.12), transparent),
+          var(--bg-elevated);
+        border-top: 1px solid var(--border-subtle);
+      }
+
+      .cta-band h2 {
+        margin: 0 0 0.75rem;
+        font-size: clamp(1.75rem, 4vw, 2.5rem);
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        text-wrap: balance;
+      }
+
+      .cta-band p {
+        margin: 0 auto 1.5rem;
+        max-width: 36ch;
+        color: var(--muted);
+        text-wrap: pretty;
+      }
+
+      .cta-band .btn-row {
+        justify-content: center;
+      }
+
+      /* Footer */
+      .site-footer {
+        padding-block: 2rem 2.5rem;
+        border-top: 1px solid var(--border-subtle);
+        background: var(--bg);
+      }
+
+      .site-footer__inner {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+
+      .site-footer__links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem 1.5rem;
+      }
+
+      .site-footer a {
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: var(--muted);
+        text-decoration: none;
+        transition: color 160ms var(--ease-out);
+      }
+
+      .site-footer a:hover {
+        color: var(--ink);
+      }
+
+      .site-footer a:focus-visible {
+        outline: 2px solid var(--focus);
+        outline-offset: 3px;
+        border-radius: 2px;
+      }
+
+      .site-footer__copy {
+        font-size: 0.8125rem;
+        color: oklch(0.5 0.02 280);
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container site-header__inner">
+        <a class="brand" href="./" aria-label="QuickVid AI, início">
+          <img
+            class="brand__logo"
+            src="public/img/logo_quickvid.png"
+            width="32"
+            height="32"
+            alt=""
+          />
+          <span class="brand__name">QuickVid <span>AI</span></span>
+        </a>
+        <nav class="site-nav" aria-label="Principal">
+          <a href="#como-funciona">Por que funciona</a>
+          <a href="#para-quem">Para quem é</a>
+          <a href="#planos">Planos e créditos</a>
+          <a href="#faq">FAQ</a>
+        </nav>
+        <a class="btn btn--primary btn--sm" href="downloads.html">Baixar QuickVid</a>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero -->
+      <section class="hero">
+        <div class="container hero__grid">
+          <div class="hero__copy">
+            <h1>
+              Escale seu canal dark: <em>Menos horas Editando. Mais vídeos no ar.</em>
+            </h1>
+            <p class="hero__lead">
+              App desktop para quem quer produzir vídeos com qualidade, sem editar frame a frame. O QuickVid transforma seu áudio em material visual organizado.
+            </p>
+            <div class="btn-row">
+              <a class="btn btn--primary" href="downloads.html?platform=mac">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                </svg>
+                Baixar para Mac
+              </a>
+              <a class="btn btn--primary" href="downloads.html?platform=win">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M3 5.5L10.5 4.6V11.4H3V5.5zm0 13L10.5 19.4V12.6H3v5.9zM11.6 4.4L21 3v8.6h-9.4V4.4zm0 15.2V12.6H21V21l-9.4-1.4z"/>
+                </svg>
+                Baixar para Windows
+              </a>
+              <a class="btn btn--ghost" href="#como-funciona">Saiba mais</a>
+            </div>
+            <div class="hero__trust">
+              <span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Mac e Windows
+              </span>
+              <span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Projetos no seu computador
+              </span>
+              <span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Produção em escala
+              </span>
+            </div>
+          </div>
+
+          <div class="pipeline-mock" aria-hidden="true">
+            <p class="pipeline-mock__label">Narração → Organização → Visuais</p>
+            <div class="pipeline">
+              <div class="pipeline__stage">
+                <p class="pipeline__stage-title">Narração</p>
+                <div class="waveform" aria-hidden="true">
+                  <svg
+                    class="waveform__svg"
+                    viewBox="0 0 320 52"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <defs>
+                      <linearGradient id="wave-fill" x1="0" y1="0" x2="320" y2="0" gradientUnits="userSpaceOnUse">
+                        <stop offset="0%" stop-color="oklch(0.72 0.14 205)" />
+                        <stop offset="55%" stop-color="oklch(0.62 0.16 250)" />
+                        <stop offset="100%" stop-color="oklch(0.58 0.18 295)" />
+                      </linearGradient>
+                      <linearGradient id="wave-line" x1="0" y1="0" x2="320" y2="0" gradientUnits="userSpaceOnUse">
+                        <stop offset="0%" stop-color="oklch(0.85 0.1 205)" />
+                        <stop offset="100%" stop-color="oklch(0.78 0.12 295)" />
+                      </linearGradient>
+                      <filter id="wave-glow" x="-10%" y="-20%" width="120%" height="140%">
+                        <feGaussianBlur stdDeviation="1.2" result="blur" />
+                        <feMerge>
+                          <feMergeNode in="blur" />
+                          <feMergeNode in="SourceGraphic" />
+                        </feMerge>
+                      </filter>
+                    </defs>
+                    <line x1="0" y1="26" x2="320" y2="26" stroke="oklch(0.28 0.02 280)" stroke-width="1" />
+                    <g class="waveform__bars" filter="url(#wave-glow)">
+                      <rect x="2" y="18" width="4" height="16" rx="2" fill="url(#wave-fill)" opacity="0.85" />
+                      <rect x="9" y="12" width="4" height="28" rx="2" fill="url(#wave-fill)" />
+                      <rect x="16" y="20" width="4" height="12" rx="2" fill="url(#wave-fill)" opacity="0.75" />
+                      <rect x="23" y="8" width="4" height="36" rx="2" fill="url(#wave-fill)" />
+                      <rect x="30" y="14" width="4" height="24" rx="2" fill="url(#wave-fill)" opacity="0.9" />
+                      <rect x="37" y="6" width="4" height="40" rx="2" fill="url(#wave-fill)" />
+                      <rect x="44" y="16" width="4" height="20" rx="2" fill="url(#wave-fill)" opacity="0.8" />
+                      <rect x="51" y="10" width="4" height="32" rx="2" fill="url(#wave-fill)" />
+                      <rect x="58" y="4" width="4" height="44" rx="2" fill="url(#wave-fill)" />
+                      <rect x="65" y="14" width="4" height="24" rx="2" fill="url(#wave-fill)" opacity="0.85" />
+                      <rect x="72" y="8" width="4" height="36" rx="2" fill="url(#wave-fill)" />
+                      <rect x="79" y="18" width="4" height="16" rx="2" fill="url(#wave-fill)" opacity="0.7" />
+                      <rect x="86" y="11" width="4" height="30" rx="2" fill="url(#wave-fill)" />
+                      <rect x="93" y="6" width="4" height="40" rx="2" fill="url(#wave-fill)" />
+                      <rect x="100" y="15" width="4" height="22" rx="2" fill="url(#wave-fill)" opacity="0.9" />
+                      <rect x="107" y="9" width="4" height="34" rx="2" fill="url(#wave-fill)" />
+                      <rect x="114" y="3" width="4" height="46" rx="2" fill="url(#wave-fill)" />
+                      <rect x="121" y="12" width="4" height="28" rx="2" fill="url(#wave-fill)" opacity="0.8" />
+                      <rect x="128" y="7" width="4" height="38" rx="2" fill="url(#wave-fill)" />
+                      <rect x="135" y="16" width="4" height="20" rx="2" fill="url(#wave-fill)" opacity="0.75" />
+                      <rect x="142" y="10" width="4" height="32" rx="2" fill="url(#wave-fill)" />
+                      <rect x="149" y="5" width="4" height="42" rx="2" fill="url(#wave-fill)" />
+                      <rect x="156" y="13" width="4" height="26" rx="2" fill="url(#wave-fill)" opacity="0.85" />
+                      <rect x="163" y="8" width="4" height="36" rx="2" fill="url(#wave-fill)" />
+                      <rect x="170" y="17" width="4" height="18" rx="2" fill="url(#wave-fill)" opacity="0.7" />
+                      <rect x="177" y="11" width="4" height="30" rx="2" fill="url(#wave-fill)" />
+                      <rect x="184" y="6" width="4" height="40" rx="2" fill="url(#wave-fill)" />
+                      <rect x="191" y="14" width="4" height="24" rx="2" fill="url(#wave-fill)" opacity="0.9" />
+                      <rect x="198" y="9" width="4" height="34" rx="2" fill="url(#wave-fill)" />
+                      <rect x="205" y="4" width="4" height="44" rx="2" fill="url(#wave-fill)" />
+                      <rect x="212" y="15" width="4" height="22" rx="2" fill="url(#wave-fill)" opacity="0.8" />
+                      <rect x="219" y="10" width="4" height="32" rx="2" fill="url(#wave-fill)" />
+                      <rect x="226" y="7" width="4" height="38" rx="2" fill="url(#wave-fill)" />
+                      <rect x="233" y="16" width="4" height="20" rx="2" fill="url(#wave-fill)" opacity="0.75" />
+                      <rect x="240" y="12" width="4" height="28" rx="2" fill="url(#wave-fill)" />
+                      <rect x="247" y="8" width="4" height="36" rx="2" fill="url(#wave-fill)" />
+                      <rect x="254" y="18" width="4" height="16" rx="2" fill="url(#wave-fill)" opacity="0.85" />
+                      <rect x="261" y="14" width="4" height="24" rx="2" fill="url(#wave-fill)" />
+                      <rect x="268" y="20" width="4" height="12" rx="2" fill="url(#wave-fill)" opacity="0.7" />
+                      <rect x="275" y="11" width="4" height="30" rx="2" fill="url(#wave-fill)" />
+                      <rect x="282" y="16" width="4" height="20" rx="2" fill="url(#wave-fill)" opacity="0.8" />
+                      <rect x="289" y="22" width="4" height="8" rx="2" fill="url(#wave-fill)" opacity="0.6" />
+                      <rect x="296" y="19" width="4" height="14" rx="2" fill="url(#wave-fill)" opacity="0.55" />
+                      <rect x="303" y="24" width="4" height="4" rx="2" fill="url(#wave-fill)" opacity="0.4" />
+                    </g>
+                    <path
+                      class="waveform__curve"
+                      d="M2 26 L9 20 L16 24 L23 14 L30 18 L37 10 L44 20 L51 16 L58 12 L65 18 L72 14 L79 22 L86 17 L93 12 L100 19 L107 15 L114 8 L121 17 L128 13 L135 21 L142 16 L149 11 L156 18 L163 14 L170 22 L177 17 L184 12 L191 19 L198 15 L205 10 L212 20 L219 16 L226 13 L233 21 L240 17 L247 12 L254 20 L261 18 L268 24 L275 19 L282 22 L289 25 L296 23 L303 26"
+                      stroke="url(#wave-line)"
+                      stroke-width="1.25"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      fill="none"
+                      opacity="0.55"
+                    />
+                    <g class="waveform__playhead">
+                      <line x1="114" y1="4" x2="114" y2="48" stroke="oklch(0.78 0.13 75)" stroke-width="1.5" stroke-linecap="round" />
+                      <circle cx="114" cy="4" r="2.5" fill="oklch(0.78 0.13 75)" />
+                    </g>
+                  </svg>
+                </div>
+              </div>
+              <div class="pipeline__arrow">↓</div>
+              <div class="pipeline__stage">
+                <p class="pipeline__stage-title">Trechos organizados</p>
+                <div class="segments">
+                  <div class="segment">
+                    <time>0:12</time>
+                    <p>Trecho 1 alinhado à narração</p>
+                  </div>
+                  <div class="segment">
+                    <time>0:28</time>
+                    <p>Trecho 2 com visual definido</p>
+                  </div>
+                  <div class="segment">
+                    <time>0:41</time>
+                    <p>Trecho 3 pronto para gerar</p>
+                  </div>
+                </div>
+              </div>
+              <div class="pipeline__arrow">↓</div>
+              <div class="pipeline__stage">
+                <p class="pipeline__stage-title">Imagens / vídeos</p>
+                <div class="thumb-grid">
+                  <div class="thumb"></div>
+                  <div class="thumb"></div>
+                  <div class="thumb"></div>
+                  <div class="thumb"></div>
+                  <div class="thumb"></div>
+                  <div class="thumb"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Prova social -->
+      <!-- <section class="section section--alt">
+        <div class="container">
+          <div class="proof">
+            <div class="proof__stat">
+              Desktop
+              <small>projetos salvos no seu computador</small>
+            </div>
+            <blockquote class="proof__quote">
+              Feito para quem publica <strong>com frequência</strong> e quer menos horas na pré-produção visual antes de editar o vídeo final.
+            </blockquote>
+          </div>
+        </div>
+      </section> -->
+
+      <!-- Como funciona -->
+      <section class="section" id="como-funciona">
+        <div class="container">
+          <header class="section__header">
+            <h2>Por que funciona</h2>
+            <p>Um app desktop que cuida da parte pesada entre a narração e a edição final. Você mantém o controle do canal; o QuickVid organiza a produção visual.</p>
+          </header>
+          <div class="steps">
+            <article class="step-card reveal">
+              <h3>Menos retrabalho</h3>
+              <p>Chega de caçar B-roll, repetir prompt e perder o fio da narração. Tudo fica no mesmo projeto.</p>
+              <p class="step-card__benefit">Fluxo contínuo, sem trocar de ferramenta o tempo todo</p>
+            </article>
+            <article class="step-card reveal">
+              <h3>Material organizado</h3>
+              <p>Cada parte da narração vira trecho com visual definido. Você sabe o que gerar e onde encaixa.</p>
+              <p class="step-card__benefit">Escala sem virar bagunça de pastas</p>
+            </article>
+            <article class="step-card reveal">
+              <h3>Pronto para editar</h3>
+              <p>A saída é pensada para você montar o vídeo no editor que já usa. O QuickVid não substitui sua edição final.</p>
+              <p class="step-card__benefit">Mais vídeos no ar com o mesmo time</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Para quem é -->
+      <section class="section section--alt" id="para-quem">
+        <div class="container">
+          <header class="section__header">
+            <h2>Para quem é</h2>
+            <p>Criadores de vídeo que trabalham com narração e precisam produzir mais, sem montar tudo na mão.</p>
+          </header>
+          <ul class="bullet-list bullet-list--2col">
+            <li>Canais no <strong>YouTube, TikTok e Reels</strong></li>
+            <li>Formatos <strong>faceless</strong>, educativos, curiosidades, mistério, terror e nichos narrados</li>
+            <li>Quem publica <strong>vários vídeos por semana</strong> e quer ganhar tempo na pré-produção</li>
+            <li>Produtores solo ou <strong>pequenas equipes</strong> no Brasil</li>
+            <li>Quem já edita em <strong>CapCut, Premiere</strong> ou similar e quer material organizado</li>
+            <li>Criadores de <strong>canal dark</strong> que buscam escalar volume com coerência visual</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Planos -->
+      <section class="section" id="planos">
+        <div class="container">
+          <header class="section__header">
+            <h2>Planos e créditos</h2>
+          </header>
+          <div class="plans-box">
+            <p>
+              Planos e créditos extras ficam dentro do app, após criar conta. O saldo aparece na sidebar enquanto você produz.
+            </p>
+            <div class="btn-row">
+              <a class="btn btn--primary" href="downloads.html">Baixar e começar</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="section section--alt" id="faq">
+        <div class="container">
+          <header class="section__header">
+            <h2>Perguntas frequentes</h2>
+          </header>
+          <div class="faq">
+            <details>
+              <summary>Preciso saber editar?</summary>
+              <div class="faq__body">
+                A montagem final continua no seu editor de vídeo. O QuickVid acelera a pré-produção visual antes dessa etapa.
+              </div>
+            </details>
+            <details>
+              <summary>Funciona com voz IA?</summary>
+              <div class="faq__body">
+                Sim. Basta enviar o arquivo de áudio da narração, seja voz gravada ou gerada por IA.
+              </div>
+            </details>
+            <details>
+              <summary>Conta Google é obrigatória?</summary>
+              <div class="faq__body">
+                Para gerar mídia dentro do app, você conecta sua conta Google na área de integrações.
+              </div>
+            </details>
+            <details>
+              <summary>Funciona no Mac e no Windows?</summary>
+              <div class="faq__body">
+                Sim. O QuickVid AI é um app desktop para macOS e Windows.
+              </div>
+            </details>
+            <details>
+              <summary>Os vídeos ficam todos iguais?</summary>
+              <div class="faq__body">
+                Você define o estilo e as instruções do seu canal. O app organiza a produção; a identidade visual continua sua.
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="cta-band">
+        <div class="container">
+          <h2>Menos horas editando. Mais vídeos no ar.</h2>
+          <p>Baixe o QuickVid AI, crie seu primeiro projeto e comece a produzir no desktop.</p>
+          <div class="btn-row">
+            <a class="btn btn--primary" href="downloads.html?platform=mac">Baixar para Mac</a>
+            <a class="btn btn--primary" href="downloads.html?platform=win">Baixar para Windows</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container site-footer__inner">
+        <span class="site-footer__copy">© QuickVid AI</span>
+        <nav class="site-footer__links" aria-label="Rodapé">
+          <a href="https://github.com/diogo-matias/quickvid-download" rel="noopener noreferrer">GitHub</a>
+          <a href="downloads.html">Download</a>
+          <a href="#faq">FAQ</a>
+        </nav>
+      </div>
+    </footer>
+
+    <script>
+      (function () {
+        var reveals = document.querySelectorAll(".reveal");
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          reveals.forEach(function (el) { el.classList.add("is-visible"); });
+          return;
+        }
+        if (!reveals.length || !("IntersectionObserver" in window)) {
+          reveals.forEach(function (el) { el.classList.add("is-visible"); });
+          return;
+        }
+
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.15, rootMargin: "0px 0px -40px 0px" });
+
+        reveals.forEach(function (el) { observer.observe(el); });
+      })();
+    </script>
+  </body>
+</html>

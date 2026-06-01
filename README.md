@@ -43,7 +43,6 @@ A instalação usa a **última release** publicada neste repositório no GitHub.
 | macOS | [Página de download](https://diogo-matias.github.io/quickvid-download/downloads.html) |
 | Windows | [Página de Download](https://diogo-matias.github.io/quickvid-download/downloads.html) |
 | Todas as releases | [GitHub Releases](https://github.com/diogo-matias/quickvid-download/releases/latest) |
-Para rodar localmente: `python3 -m http.server 8080` e abra `http://localhost:8080/index.html`.
 
 ---
 

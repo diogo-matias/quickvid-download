@@ -317,7 +317,6 @@
       .token-cmd { color: oklch(0.78 0.1 205); }
       .token-url { color: oklch(0.72 0.08 145); }
       .token-pipe { color: var(--muted); }
-      .token-cmd-ps { color: oklch(0.75 0.1 285); }
 
       .smartscreen-guide {
         margin-top: 1.5rem;
@@ -440,7 +439,7 @@
           <div class="install-card">
             <h2>Instalação no Windows</h2>
             <p class="install-card__note">
-              Baixe o instalador da <strong>última release</strong> ou use o script no PowerShell.
+              Baixe o instalador da <strong>última release</strong> e siga o assistente de instalação.
             </p>
             <div class="btn-row">
               <a class="btn btn--primary" id="download-win-exe" href="https://github.com/diogo-matias/quickvid-download/releases/latest?utm_source=lp&utm_campaign=dark_creators" rel="noopener noreferrer">
@@ -462,17 +461,6 @@
               </figure>
             </aside>
 
-            <p class="install-card__label install-card__label--spaced">Ou no PowerShell:</p>
-            <div class="code-panel">
-              <div class="code-panel__toolbar">
-                <div class="code-panel__dots" aria-hidden="true"><span></span><span></span><span></span></div>
-                <button type="button" class="copy-btn" data-copy-text="irm https://raw.githubusercontent.com/diogo-matias/quickvid-download/main/install-windows.ps1 | iex" aria-live="polite">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-                  <span class="copy-btn__label">Copiar comando</span>
-                </button>
-              </div>
-              <pre><code><span class="token-cmd-ps">irm</span> <span class="token-url">https://raw.githubusercontent.com/diogo-matias/quickvid-download/main/install-windows.ps1</span> <span class="token-pipe">|</span> <span class="token-cmd-ps">iex</span></code></pre>
-            </div>
             <p class="install-card__hint">Abra o arquivo baixado e siga o assistente.</p>
           </div>
         </div>
